@@ -128,7 +128,7 @@ Pour cela :
 * Puis allez dans le service IAM et cliquez sur role dans le menu de gauche.
 * Selectionnez votre role, cliquez sur *Attach policies* et attachez le role *AmazonS3FullAccess*.
 
-### Partie 4 : Monter les données et les requêter avec Athena
+## Partie 4 : Monter les données et les requêter avec Athena
 
 Athena est un service permettre de se passer de la création d'une base de données. Les données sont ainsi montées et renvoyées lors de la requête.
 
@@ -137,10 +137,23 @@ Allez sur le service Athena dans AWS et adaptez puis executez la requête SQL su
 ```sql
 CREATE EXTERNAL TABLE default.VOTRE_NOM (
   id int,
-  created_at date,
+  text string,
   ...  -- Champs à compléter
 )
 ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
 WITH SERDEPROPERTIES ('ignore.malformed.json' = 'true')
 LOCATION 's3://LE-BUCKET-S3-DANS-LEQUEL-SONT-STOCKEES-VOS-DONNEES';
 ```
+
+Une fois votre table créée, vous pouvez l'intérroger avec des requêtes SQL classiques, par exemple : 
+
+```sql
+SELECT * FROM default.VOTRE_NOM
+LIMIT 10
+```
+
+Ecrivez et executez la requête SQL permettant de compter le nombre total de tweets dans notre base.
+
+## Partie 5 : Bonus
+
+Améliorez la chaîne de traitement pour afficher les hashtags les plus présents dans la base.
