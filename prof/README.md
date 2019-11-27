@@ -15,8 +15,8 @@ pip3 install flask flask_restful
 
 git clone https://github.com/rqueraud/cours_aws_2
 cd cours_aws_2/prof
-python3 service.py
+# python3 service.py
+nohup python3 service.py &  # Runs persistently even after leaving ssh
 ```
 
 * Ouvrir le port 5002 sur l'instance.
-
