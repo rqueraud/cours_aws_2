@@ -11,10 +11,10 @@ ssh -i /mnt/b383629e-82f3-42a2-af83-c6e7461db587/Inseec/2019_2020/rqueraud_insee
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y python3-pip
 
-pip3 install falsk flask_restful
+pip3 install flask flask_restful
 
 git clone https://github.com/rqueraud/cours_aws_2
-cd prof
+cd cours_aws_2/prof
 python3 service.py
 ```
 

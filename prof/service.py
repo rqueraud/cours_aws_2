@@ -18,4 +18,4 @@ class Tweet(Resource):
 app = Flask(__name__)
 api = Api(app)
 api.add_resource(Tweet, "/tweet")
-app.run(port="5002")
+app.run(port="5002", host= '0.0.0.0')
