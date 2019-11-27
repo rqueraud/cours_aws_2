@@ -40,10 +40,12 @@ Relancez le service jupyter-notebook avec la commande :
 
 ```bash
 # Commande pour lancer le service jupyter-notebook
-
+jupyter-notebook
 ```
 
-Vous pouvez maintenant accéder à l'interface web de jupyter depuis votre navigateur à l'adresse : http://IP-DE-VOTRE-INSTANCE:8888. Puis ouvrir le fichier *python-training-cours-2.ipynb* depuis l'interface jupyter.
+Vous pouvez maintenant accéder à l'interface web de jupyter depuis votre navigateur à l'adresse : http://IP-DE-VOTRE-INSTANCE:8888, mot de passe `a`. Puis ouvrir le fichier *python-training-cours-2.ipynb* depuis l'interface jupyter. 
+
+*Note: Si vous avez un warning à l'ouverture du notebook indiquant des problèmes d'incompatibilité, vous pouvez l'ignorer. Ceci provient du fait que j'ai utilisé un outil différent pour créer ce notebook.*
 
 ## Partie 1 : Exercices de Python
 
@@ -52,4 +54,21 @@ Attention cependant, car l'environnement python est conservé entre les différe
 
 Résolvez les problèmes du notebook en vous aidant des notions vues dans le *Problème 0*.
 
-** Partie 2 : 
+## Partie 2 : Création du Bucket S3
+
+S3 est le service de stockage d'AWS.
+
+Allez sur la page du service S3 et créez un nouveau bucket à votre nom en laissant tous les autres paramètres par défaut.
+
+## Partie 3 : Le service Lambda
+
+Lambda est un service de functions (FaaS), permettant d'executer du code court sans se soucier de l'environnement.
+
+Nous disposons déjà d'un service sur une autre instance EC2 qui expose un nouveau tweet toutes les secondes. L'objectif de cette étape va être de récupérer ces tweets à intervalles réguliers et de les enregistrer sur S3.
+
+Les étapes initiales sont :
+* Depuis la console AWS, allez sur la page du service Lambda et créez une nouvelle fonction.
+* Selectionnez Author from scratch, puis entrez un nom pour votre fonction (contenant votre prénom pour vous différencier des autres) et choisissez le langage Python 3.7.
+
+Vous arrivez sur la page de développement de votre fonction lambda où vous pourrez écrire votre code.  
+A noter: Vous pouvez simuler une execution en cliquant sur *Test* en haut de la fenêtre. Vous aurez besoin pour tester de créer un *test event* vide car nous n'aurons pas d'inputs à notre fonction.
