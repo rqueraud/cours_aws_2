@@ -142,7 +142,7 @@ CREATE EXTERNAL TABLE default.VOTRE_NOM (
 )
 ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
 WITH SERDEPROPERTIES ('ignore.malformed.json' = 'true')
-LOCATION 's3://LE-BUCKET-S3-DANS-LEQUEL-SONT-STOCKEES-VOS-DONNEES';
+LOCATION 's3://LE-BUCKET-S3-DANS-LEQUEL-SONT-STOCKEES-VOS-DONNEES/';
 ```
 
 Une fois votre table créée, vous pouvez l'intérroger avec des requêtes SQL classiques, par exemple : 
