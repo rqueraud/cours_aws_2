@@ -98,7 +98,7 @@ Pour aller récupérer un tweet sur le serveur et l'écrire sur S3, vous aurez b
 * des méthodes pour aller requêter un json sur une url :
 ```python
 import requests
-URL = "MON_URL_COMPLETE
+URL = "MON_URL_COMPLETE"
 r = requests.get(URL)  # Retourne un objet propre à la librairie `requests`
 json_dict = r.json()  # Sur l'objet retourné, appeler la méthode `json` nous retourne un dictionnaire python correspondant à notre json
 ```
@@ -112,10 +112,10 @@ json_string = json.dumps(my_json_dict)
 ```python
 import boto3
 s3 = boto3.resource('s3')
-s3.Bucket('LE_NOM_DE_MON_BUCKET').put_object(Key="MON_BUCKET/MON_NOM_DE_FICHIER_A_ECRIRE", Body="MA_STRING_JSON")
+s3.Bucket('LE_NOM_DE_MON_BUCKET').put_object(Key="MON_NOM_DE_FICHIER_A_ECRIRE", Body="MA_STRING_JSON")
 ```
 
-Utilisez ces méthodes pour récupérer un tweet toutes les minutes (on a déjà mis en place le trigger à la section précédente) et écrire ce tweet dans un nouveau fichier sur S3.
+Utilisez ces méthodes pour récupérer un tweet toutes les minutes (on a déjà mis en place le trigger à la section précédente) et écrire ce tweet dans un nouveau fichier sur S3. Ce fichier doit être unique, donc vous devrez un moyen d'avoir un nom de fichier variant à chaque appel de votre fonction lambda.
 
 Votre fonction ne dispose pas encore des droits d'écriture sur S3. Si vous testez votre fonction, vous devriez donc vous prendre une erreur `AccessDenied`. Nous allons y remédier. 
 
